@@ -1,0 +1,44 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+
+local Window = Library.CreateLib("Тест хаб", "RJTheme3")
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Основы")
+
+Section:NewSlider("WalkSpeed", "Сила скорости", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+   game:GetService("Workspace").twoxxilian.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("jumpPower", "Сила прыжка", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+   game:GetService("Workspace").twoxxilian.Humanoid.JumpPower = s
+end)
+
+Section:NewSlider("Gravity", "Гравитация", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Workspace.Gravity = s
+end)
+
+local Tab = Window:NewTab("Esp")
+
+local Section = Tab:NewSection("Section Name")
+
+Section:NewButton("ButtonText", "ButtonInfo", function()
+    while wait(0.5) do
+    for i, childrik in ipairs(workspace:GetDescendants()) do
+        if childrik:FindFirstChild("Humanoid") then
+            if not childrik:FindFirstChild("EspBox") then
+                if childrik ~= game.Players.LocalPlayer.Character then
+                    local esp = Instance.new("BoxHandleAdornment",childrik)
+                    esp.Adornee = childrik
+                    esp.ZIndex = 0
+                    esp.Size = Vector3.new(4, 5, 1)
+                    esp.Transparency = 0.20
+                    esp.Color3 = Color3.fromRGB(255,48,48)
+                    esp.AlwaysOnTop = true
+                    esp.Name = "EspBox"
+                end
+            end
+        end
+    end
+end
+end)
